@@ -19,4 +19,5 @@ The scripts have two steps:
 
 1. Create & Execute SQL scripts - DDL and DML : The first step is to create and execute the DDL scripts. Thses DDL scripts are integrated in the SQL file and will create the tables required for the project. After the tables have been created, the next step is to add data into the table. Here we insert data using insert statements using DML. The insert statements are integrated in the SQL file. The integrated scripts are called `create_insert_ddl_dml.sql`.
 
-2. Executing Reports - SQL : The third step is to execute the reports. The SQL scripts are called `execute_reports.sql`.
+2. Executing Reports - SQL : The third step is to execute the reports. The SQL scripts are called `execute_reports.sql`. 
+3. Executing test cases - SQL : Final step to verify the accuracy of program is to execute the test_case.sql
