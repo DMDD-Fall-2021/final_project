@@ -15,6 +15,7 @@ These records can be used to derive various statistical reports about the patien
 
 Running all the scripts will bootstrap the database, create the tables, insert data, and run the queries for getting the reports.
 
+## HOW TO RUN/INSTALL:
 Please run the following files in given order:
 
 1. EXPORT_TABLES.sql - DDL and DML : Drop and Create new Tables and Sequence using the DDL scripts, then add new data into newly created tables using DML scripts in a `create_insert_ddl_dml.sql` manner.
