@@ -1,89 +1,76 @@
 -----------------------------------------------------------------------------------------------------
 --- ALLERGY
 -----------------------------------------------------------------------------------------------------
-set serveroutput on;
+SET SERVEROUTPUT ON;
 
 DECLARE
-
-STATUS varchar2(400);
-
+    status VARCHAR2(400);
 BEGIN
 
 --- PART A
 --- TEST UPDATE ALLERGY
-    pk_app_admin.PR_INSERT_UPDATE_ALLERGY(7,'Cotton Allergy',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_allergy('A_280', 7, 'Cotton Allergy', 'A_280', status);
+    dbms_output.put_line('TEST UPDATE - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ALLERGY(47,'Metal Allergy',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_allergy('A_280', 47, 'Metal Allergy', 'A_280', status);
+    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ALLERGY(4,'Some 123 Allergy',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NUMBER - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_allergy('A_280', 4, 'Some 123 Allergy', 'A_280', status);
+    dbms_output.put_line('TEST NUMBER - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ALLERGY(NULL,'New Allergy',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_allergy('A_280', NULL, 'New Allergy', 'A_280', status);
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ALLERGY(7,'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);
-
+    pk_app_admin.pr_insert_update_allergy('A_280', 7, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+    'A_280', status);
+    dbms_output.put_line('TEST TOO LONG - OUTPUT: ' || status);
 END;
 /
 
-BEGIN
---- ROLLBACK ALLERGY
-    DELETE from ALLERGIES where allergy_id>30;
-    UPDATE ALLERGIES SET allergy_name='Wheat Allergy' where allergy_id=7;
-
-END;
-/
 -----------------------------------------------------------------------------------------------------
 --- APP_ROLE
 -----------------------------------------------------------------------------------------------------
 
-
 DECLARE
-
-STATUS varchar2(400);
-
+    status VARCHAR2(400);
 BEGIN
 
 --- PART B
 --- TEST UPDATE APP_ROLE
-    pk_app_admin.PR_INSERT_UPDATE_APP_ROLE(3,'Chemist',sysdate,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_app_role('A_280', 3, 'Chemist', sysdate, 'A_280',
+                                          status);
+    dbms_output.put_line('TEST UPDATE - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_APP_ROLE(9,'Pharmacy',sysdate,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_app_role('A_280', 9, 'Pharmacy', sysdate, 'A_280',
+                                          status);
+    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_APP_ROLE(3,'Some 123',sysdate,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NUMBER - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_app_role('A_280', 3, 'Some 123', sysdate, 'A_280',
+                                          status);
+    dbms_output.put_line('TEST NUMBER - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_APP_ROLE(NULL,'New Role',sysdate,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_app_role('A_280', NULL, 'New Role', sysdate, 'A_280',
+                                          status);
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_APP_ROLE(3,'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',sysdate,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
+    pk_app_admin.pr_insert_update_app_role('A_280', 3, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+    sysdate, 'A_280',
+                                          status);
+    dbms_output.put_line('TEST TOO LONG - OUTPUT: ' || status);    
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_APP_ROLE(3,'Pharmacist',sysdate+5,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST FUTURE DATE - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_app_role('A_280', 3, 'Pharmacist', sysdate + 5, 'A_280',
+                                          status);
 
-END;
-/
-
-BEGIN
---- ROLLBACK APP_ROLE
-    DELETE from APP_ROLE where role_id>4;
-    UPDATE APP_ROLE SET role_type='Pharmacist' where role_id=3;
-
+    dbms_output.put_line('TEST FUTURE DATE - OUTPUT: ' || status);
 END;
 /
 
@@ -91,83 +78,64 @@ END;
 --- COUNTRY
 -----------------------------------------------------------------------------------------------------
 
-
 DECLARE
-
-STATUS varchar2(400);
-
+    status VARCHAR2(400);
 BEGIN
 
 --- PART C
 --- TEST UPDATE COUNTRY
-    pk_app_admin.PR_INSERT_UPDATE_COUNTRY(1,'IN',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_country('A_280', 1, 'IN', 'A_280', status);
+    dbms_output.put_line('TEST UPDATE - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_COUNTRY(2,'UK',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_country('A_280', 2, 'UK', 'A_280', status);
+    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_COUNTRY(1,'Some 123',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NUMBER - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_country('A_280', 1, 'Some 123', 'A_280', status);
+    dbms_output.put_line('TEST NUMBER - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_COUNTRY(NULL,'New Country',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_country('A_280', NULL, 'New Country', 'A_280', status);
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_COUNTRY(1,'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
-
+    pk_app_admin.pr_insert_update_country('A_280', 1, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+    'A_280', status);
+    dbms_output.put_line('TEST TOO LONG - OUTPUT: ' || status);
 END;
 /
 
-BEGIN
---- ROLLBACK COUNTRY
-    DELETE from COUNTRY where country_code>1;
-    UPDATE COUNTRY SET country_name='US' where country_code=1;
-
-END;
-/
 -----------------------------------------------------------------------------------------------------
 --- DIET
 -----------------------------------------------------------------------------------------------------
 
 
 DECLARE
-
-STATUS varchar2(400);
-
+    status VARCHAR2(400);
 BEGIN
 
 --- PART D
 --- TEST UPDATE DIET
-    pk_app_admin.PR_INSERT_UPDATE_DIET(9,'OVO-Waterarian',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_diet('A_280', 9, 'Ovo-Waterarian', 'A_280', status);
+    dbms_output.put_line('TEST UPDATE - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_DIET(17,'Non Eatarian',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_diet('A_280', 17, 'Non Eatarian', 'A_280', status);
+    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_DIET(9,'Some 123',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NUMBER - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_diet('A_280', 9, 'Some 123', 'A_280', status);
+    dbms_output.put_line('TEST NUMBER - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_DIET(NULL,'New Diet',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_diet('A_280', NULL, 'New Diet', 'A_280', status);
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_DIET(9,'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
-
-END;
-/
-
-BEGIN
---- ROLLBACK DIET
-    DELETE from DIET where diet_id>11;
-    UPDATE DIET SET diet_type='Ovo-Lacto Vegetarian' where diet_id=9;
+    pk_app_admin.pr_insert_update_diet('A_280', 9, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+    'A_280', status);
+    dbms_output.put_line('TEST TOO LONG - OUTPUT: ' || status);
 END;
 /
 
@@ -177,51 +145,56 @@ END;
 
 
 DECLARE
-
-STATUS varchar2(400);
-
+    status VARCHAR2(400);
 BEGIN
 
 --- PART E
 --- TEST UPDATE DISEASES
-    pk_app_admin.PR_INSERT_UPDATE_DISEASE(20,'Diarrhea','FALSE', 'FALSE','FALSE',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
-    
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_DISEASE(73,'Leukemia','TRUE','TRUE','TRUE',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
-    
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_DISEASE(NULL,'New Disease','TRUE', 'FALSE','FALSE',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
-    
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_MEDICINE(20,'Some 123$',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NUMBER - OUTPUT: '|| STATUS);
-    
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_DISEASE(20,'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout','FALSE', 'TRUE','FALSE',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
-    
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_DISEASE(20,'Hemophilia','TRUE', 'TRUE','NOTHING',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST TERMINAL WRONG- OUTPUT: '|| STATUS);
-    
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_DISEASE(20,'Hemophilia','TRUE', 'NOTHING','TRUE',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST HEREDITARY WRONG- OUTPUT: '|| STATUS);
-    
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_DISEASE(20,'Hemophilia','', 'TRUE','TRUE',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST CHRONIC WRONG- OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_disease('A_280', 20, 'Diarrhea', 'FALSE', 'FALSE',
+                                         'FALSE', 'A_280', status);
 
-END;
-/
+    dbms_output.put_line('TEST UPDATE - OUTPUT: ' || status);
+    
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_disease('A_280', 73, 'Leukemia', 'TRUE', 'TRUE',
+                                         'TRUE', 'A_280', status);
 
-BEGIN
---- ROLLBACK DISEASES
-    DELETE from DISEASES where disease_id>21;
-    UPDATE DISEASES SET disease_name='Hemophilia',is_chronic='TRUE', is_hereditary='TRUE',is_terminal='TRUE' where disease_id=20;
+    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
+    
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_disease('A_280', NULL, 'New Disease', 'TRUE', 'FALSE',
+                                         'FALSE', 'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
+    
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_medicine('A_280', 20, 'Some 123$', 'A_280', status);
+    dbms_output.put_line('TEST NUMBER - OUTPUT: ' || status);
+    
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_disease('A_280', 20, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+    'FALSE', 'TRUE',
+                                         'FALSE', 'A_280', status);
+
+    dbms_output.put_line('TEST TOO LONG - OUTPUT: ' || status);    
+    
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_disease('A_280', 20, 'Hemophilia', 'TRUE', 'TRUE',
+                                         'NOTHING', 'A_280', status);
+
+    dbms_output.put_line('TEST TERMINAL WRONG- OUTPUT: ' || status);
+    
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_disease('A_280', 20, 'Hemophilia', 'TRUE', 'NOTHING',
+                                         'TRUE', 'A_280', status);
+
+    dbms_output.put_line('TEST HEREDITARY WRONG- OUTPUT: ' || status);
+    
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_disease('A_280', 20, 'Hemophilia', '', 'TRUE',
+                                         'TRUE', 'A_280', status);
+
+    dbms_output.put_line('TEST CHRONIC WRONG- OUTPUT: ' || status);
 END;
 /
 
@@ -229,41 +202,31 @@ END;
 --- ETHNICITY
 -----------------------------------------------------------------------------------------------------
 
-
 DECLARE
-
-STATUS varchar2(400);
-
+    status VARCHAR2(400);
 BEGIN
 
 --- PART F
 --- TEST UPDATE ETHNICITY
-    pk_app_admin.PR_INSERT_UPDATE_ETHNICITY(5,'Arab',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_ethnicity('A_280', 5, 'Arab', 'A_280', status);
+    dbms_output.put_line('TEST UPDATE - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ETHNICITY(9,'Nordic',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_ethnicity('A_280', 9, 'Nordic', 'A_280', status);
+    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ETHNICITY(5,'Some 123',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NUMBER - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_ethnicity('A_280', 5, 'Some 123', 'A_280', status);
+    dbms_output.put_line('TEST NUMBER - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ETHNICITY(NULL,'New Ethnicity',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_ethnicity('A_280', NULL, 'New Ethnicity', 'A_280', status);
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ETHNICITY(5,'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
-
-END;
-/
-
-BEGIN
---- ROLLBACK ETHNICITY
-    DELETE from ETHNICITY where ethnicity_id>11;
-    UPDATE ETHNICITY SET ethnicity_name='Hawaian' where ethnicity_id=5;
+    pk_app_admin.pr_insert_update_ethnicity('A_280', 5, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+    'A_280', status);
+    dbms_output.put_line('TEST TOO LONG - OUTPUT: ' || status);
 END;
 /
 
@@ -271,41 +234,31 @@ END;
 --- HABIT
 -----------------------------------------------------------------------------------------------------
 
-
 DECLARE
-
-STATUS varchar2(400);
-
+    status VARCHAR2(400);
 BEGIN
 
 --- PART G
 --- TEST UPDATE HABIT
-    pk_app_admin.PR_INSERT_UPDATE_HABIT(3,'Over Sleeping',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_habit('A_280', 3, 'Over Sleeping', 'A_280', status);
+    dbms_output.put_line('TEST UPDATE - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_HABIT(17,'Not Eating',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_habit('A_280', 17, 'Not Eating', 'A_280', status);
+    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_HABIT(3,'Some 123',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NUMBER - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_habit('A_280', 3, 'Some 123', 'A_280', status);
+    dbms_output.put_line('TEST NUMBER - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_HABIT(NULL,'New Habit',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_habit('A_280', NULL, 'New Habit', 'A_280', status);
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_HABIT(3,'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
-
-END;
-/
-
-BEGIN
---- ROLLBACK HABIT
-    DELETE from HABIT where habit_id>12;
-    UPDATE HABIT SET habit_name='JUUL' where habit_id=3;
+    pk_app_admin.pr_insert_update_habit('A_280', 3, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+    'A_280', status);
+    dbms_output.put_line('TEST TOO LONG - OUTPUT: ' || status);
 END;
 /
 
@@ -315,39 +268,30 @@ END;
 
 
 DECLARE
-
-STATUS varchar2(400);
-
+    status VARCHAR2(400);
 BEGIN
 
 --- PART H
 --- TEST UPDATE MEDICINE
-    pk_app_admin.PR_INSERT_UPDATE_MEDICINE(10,'Disprin',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_medicine('A_280', 10, 'Disprin', 'A_280', status);
+    dbms_output.put_line('TEST UPDATE - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_MEDICINE(46,'Combiflam',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_medicine('A_280', 46, 'Combiflam', 'A_280', status);
+    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_MEDICINE(10,'Some 123$',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NUMBER - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_medicine('A_280', 10, 'Some 123$', 'A_280', status);
+    dbms_output.put_line('TEST NUMBER - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_MEDICINE(NULL,'New Medicine',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_medicine('A_280', NULL, 'New Medicine', 'A_280', status);
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_MEDICINE(10,'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
-
-END;
-/
-
-BEGIN
---- ROLLBACK MEDICINE
-    DELETE from MEDICINES where medicine_id>20;
-    UPDATE MEDICINES SET medicine_name='zofram' where medicine_id=10;
+    pk_app_admin.pr_insert_update_medicine('A_280', 10, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+    'A_280', status);
+    dbms_output.put_line('TEST TOO LONG - OUTPUT: ' || status);
 END;
 /
 
@@ -357,39 +301,30 @@ END;
 
 
 DECLARE
-
-STATUS varchar2(400);
-
+    status VARCHAR2(400);
 BEGIN
 
 --- PART I
 --- TEST UPDATE SYMPTOMS
-    pk_app_admin.PR_INSERT_UPDATE_SYMPTOMS(35,'Loose Motion',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_symptoms('A_280', 35, 'Loose Motion', 'A_280', status);
+    dbms_output.put_line('TEST UPDATE - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_SYMPTOMS(93,'Blackout',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_symptoms('A_280', 93, 'Blackout', 'A_280', status);
+    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_SYMPTOMS(35,'Some 123',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NUMBER - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_symptoms('A_280', 35, 'Some 123', 'A_280', status);
+    dbms_output.put_line('TEST NUMBER - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_SYMPTOMS(NULL,'New Symptom',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_symptoms('A_280', NULL, 'New Symptom', 'A_280', status);
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_SYMPTOMS(35,'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
-
-END;
-/
-
-BEGIN
---- ROLLBACK SYMPTOMS
-    DELETE from SYMPTOMS where symptom_id>40;
-    UPDATE SYMPTOMS SET symptom_name='Thinning Hair' where symptom_id=35;
+    pk_app_admin.pr_insert_update_symptoms('A_280', 35, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+    'A_280', status);
+    dbms_output.put_line('TEST TOO LONG - OUTPUT: ' || status);
 END;
 /
 
@@ -399,47 +334,45 @@ END;
 
 
 DECLARE
-
-STATUS varchar2(400);
-
+    status VARCHAR2(400);
 BEGIN
 
 --- PART J
 --- TEST UPDATE VACCINE
-    pk_app_admin.PR_INSERT_UPDATE_VACCINE(1,'PCS13',15,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_vaccine('A_280', 1, 'PCS13', 15, 'A_280',
+                                         status);
+    dbms_output.put_line('TEST UPDATE - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_VACCINE(9,'PSLV4',13,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_vaccine('A_280', 9, 'PSLV4', 13, 'A_280',
+                                         status);
+    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_VACCINE(1,'Some 12^3',13,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INVALID NAME - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_vaccine('A_280', 1, 'Some 12^3', 13, 'A_280',
+                                         status);
+    dbms_output.put_line('TEST INVALID NAME - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_VACCINE(NULL,'New Vaccine',13,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_vaccine('A_280', NULL, 'New Vaccine', 13, 'A_280',
+                                         status);
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_VACCINE(1,'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',13,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
+    pk_app_admin.pr_insert_update_vaccine('A_280', 1, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout',
+    13, 'A_280',
+                                         status);
+    dbms_output.put_line('TEST TOO LONG - OUTPUT: ' || status);    
 
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_VACCINE(1,'PSLV4',33,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST DISEASE NOT EXIST - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_vaccine('A_280', 1, 'PSLV4', 33, 'A_280',
+                                         status);
+    dbms_output.put_line('TEST DISEASE NOT EXIST - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_VACCINE(1,'PSLV4',NULL,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST DISEASE NULL - OUTPUT: '|| STATUS);  
-
-END;
-/
-
-BEGIN
---- ROLLBACK VACCINE
-    DELETE from VACCINE where vaccine_id>6;
-    UPDATE VACCINE SET vaccine_name='PCV13',disease_id=15 where vaccine_id=1;
+    pk_app_admin.pr_insert_update_vaccine('A_280', 1, 'PSLV4', NULL, 'A_280',
+                                         status);
+    dbms_output.put_line('TEST DISEASE NULL - OUTPUT: ' || status);
 END;
 /
 
@@ -447,41 +380,40 @@ END;
 --- LOCATION_STATISTICS
 -----------------------------------------------------------------------------------------------------
 
-
 DECLARE
-
-STATUS varchar2(400);
-
+    status VARCHAR2(400);
 BEGIN
 
 --- PART K
 --- TEST UPDATE LOCATION_STATISTICS
-    pk_app_admin.PR_INSERT_UPDATE_LOCATION_STAT(1,1,140,140,140,140,70,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_location_stat('A_280', 1, 1, 140, 140,
+                                               140, 140, 70, 'A_280', status);
+
+    dbms_output.put_line('TEST UPDATE - OUTPUT: ' || status);
     
 --- TEST INSERT WITH DEFAULT
-    pk_app_admin.PR_INSERT_UPDATE_LOCATION_STAT(32000,31000,'','','','','',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_location_stat('A_280', 32000, 31000, '', '',
+                                               '', '', '', 'A_280', status);
+
+    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
     
 --- TEST INSERT
-    pk_app_admin.PR_INSERT_UPDATE_LOCATION_STAT(34000,34000,100,100,100,100,100,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_location_stat('A_280', 34000, 34000, 100, 100,
+                                               100, 100, 100, 'A_280', status);
+
+    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_LOCATION_STAT(NULL,32000,100,100,100,100,100,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_location_stat('A_280', NULL, 32000, 100, 100,
+                                               100, 100, 100, 'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_LOCATION_STAT(33000,NULL,'','','','','',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_location_stat('A_280', 33000, NULL, '', '',
+                                               '', '', '', 'A_280', status);
 
-END;
-/
-
-BEGIN
---- ROLLBACK LOCATION_STATISTICS
-    DELETE from LOCATION_STATISTICS where location_code>31836;
-    UPDATE LOCATION_STATISTICS SET zip_id=1,particulate_matter_reading=3,co_readings=4,no2_readings=0,air_polution_index=1,water_quality_parameter=1 where location_code=1;
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
 END;
 /
 
@@ -489,65 +421,78 @@ END;
 --- ZIPCODE
 -----------------------------------------------------------------------------------------------------
 
-
 DECLARE
-
-STATUS varchar2(400);
-
+    status VARCHAR2(400);
 BEGIN
 
 --- PART L
 --- TEST UPDATE ZIPCODE
-    pk_app_admin.PR_INSERT_UPDATE_ZIP_CODE(1,1,'Middlesex','Boston','Massachussetts',1,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_zip_code('A_280', 1, 1, 'Middlesex', 'Boston',
+                                          'Massachussetts', 1, 'A_280', status);
+
+    dbms_output.put_line('TEST UPDATE - OUTPUT: ' || status);
     
 --- TEST INSERT WITH DEFAULT
-    pk_app_admin.PR_INSERT_UPDATE_ZIP_CODE(32001,32001,'Middlesex','Boston','Massachussetts',1,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
-    
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ZIP_CODE(NULL,32000,'Middlesex','Boston','Massachussetts',1,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
-    
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ZIP_CODE(33000,NULL,'Middlesex','Boston','Massachussetts',1,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
-    
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ZIP_CODE(1,1,'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident','Boston','Massachussetts',1,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
-        
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ZIP_CODE(1,1,'Middlesex','At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident','Massachussetts',1,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
-        
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ZIP_CODE(1,1,'Middlesex','Boston','At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident',1,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
-    
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ZIP_CODE(1,1,'Couny123','Boston','Massachussetts',1,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
-        
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ZIP_CODE(1,1,'Middlesex','City123','Massachussetts',1,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
-        
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ZIP_CODE(1,1,'Middlesex','Boston','State123',1,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
-    
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_ZIP_CODE(1,1,'Middlesex','Boston','Massachussetts',10,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
-   
-END;
-/
+    pk_app_admin.pr_insert_update_zip_code('A_280', 32001, 32001, 'Middlesex', 'Boston',
+                                          'Massachussetts', 1, 'A_280', status);
 
-BEGIN
---- ROLLBACK ZIPCODE
-    DELETE from ZIPCODE where zip_id>31836;
-    UPDATE ZIPCODE SET zip_code=1,county='Hampden',city='Agawam',state_name='Massachusetts',country_code=1 where zip_id=1;
+    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
+    
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_zip_code('A_280', NULL, 32000, 'Middlesex', 'Boston',
+                                          'Massachussetts', 1, 'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
+    
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_zip_code('A_280', 33000, NULL, 'Middlesex', 'Boston',
+                                          'Massachussetts', 1, 'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
+    
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_zip_code('A_280', 1, 1, 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident',
+    'Boston',
+                                          'Massachussetts', 1, 'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
+        
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_zip_code('A_280', 1, 1, 'Middlesex', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident',
+                                          'Massachussetts', 1, 'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
+        
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_zip_code('A_280', 1, 1, 'Middlesex', 'Boston',
+                                          'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident',
+                                          1, 'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
+    
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_zip_code('A_280', 1, 1, 'Couny123', 'Boston',
+                                          'Massachussetts', 1, 'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
+        
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_zip_code('A_280', 1, 1, 'Middlesex', 'City123',
+                                          'Massachussetts', 1, 'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
+        
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_zip_code('A_280', 1, 1, 'Middlesex', 'Boston',
+                                          'State123', 1, 'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
+    
+--- TEST UPDATE
+    pk_app_admin.pr_insert_update_zip_code('A_280', 1, 1, 'Middlesex', 'Boston',
+                                          'Massachussetts', 10, 'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
 END;
 /
 
@@ -555,96 +500,209 @@ END;
 --- USER_DETAILS
 -----------------------------------------------------------------------------------------------------
 
-
 DECLARE
-
-STATUS varchar2(400);
-
+    status VARCHAR2(400);
 BEGIN
 
 --- PART M
 --- TEST UPDATE USER_DETAILS
-    pk_app_admin.PR_insert_update_user_details(1,'James','Gunn','Male','12-FEB-89',86,174,2349,4,1,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_user_details('A_280', 499, 'James', 'Gunn', 'Male',
+                                              '12-FEB-89', 86, 174, 2349, 4,
+                                              1, 'A_280', status);
+
+    dbms_output.put_line('TEST UPDATE - OUTPUT: ' || status);
     
 --- TEST INSERT WITH DEFAULT
-    pk_app_admin.PR_insert_update_user_details(5000,'Chuck','Buttowski','Male','11-MAY-79',90,184,1001,5,3,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_user_details('A_280', 5000, 'Chuck', 'Buttowski', 'Male',
+                                              '11-MAY-79', 90, 184, 1001, 5,
+                                              3, 'A_280', status);
+
+    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_insert_update_user_details(1,'Chriss','Hemsworth','Male',sysdate+5,99,184,1001,5,3,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_user_details('A_280', 499, 'Chriss', 'Hemsworth', 'Male',
+                                              sysdate + 5, 99, 184, 1001, 5,
+                                              3, 'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_insert_update_user_details(1,'Chriss','Hemsworth','Male','11-MAY-79',99,184,32000,80,3,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_user_details('A_280', 499, 'Chriss', 'Hemsworth', 'Male',
+                                              '11-MAY-79', 99, 184, 32000, 80,
+                                              3, 'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
     
 --- TEST UPDATE
-    pk_app_admin.PR_insert_update_user_details(1,'Chriss','Hemsworth','Male','11-MAY-79',99,184,1001,5,40,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
-   
+    pk_app_admin.pr_insert_update_user_details('A_280', 499, 'Chriss', 'Hemsworth', 'Male',
+                                              '11-MAY-79', 99, 184, 1001, 5,
+                                              40, 'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
 END;
 /
 
-BEGIN
---- ROLLBACK USER_DETAILS
-    DELETE from USER_DETAILS where user_id>500;
-    UPDATE USER_DETAILS SET first_name='James',last_name='Butt',gender='Male',date_of_birth='11-JUN-89',weight=96,height=174,zip_id=2349,diet_id=1,ethnicity_id=4 where user_id=1;
-END;
-/
 -----------------------------------------------------------------------------------------------------
 --- APP_USER
 -----------------------------------------------------------------------------------------------------
 
-
 DECLARE
-
-STATUS varchar2(400);
-
+    status VARCHAR2(400);
 BEGIN
 
 --- PART N
 --- TEST UPDATE APP_USER
-    pk_app_admin.PR_INSERT_UPDATE_APP_USER(1,1,'Jim','Halpert',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
+    pk_app_admin.pr_insert_update_app_user('A_280', 489, 2, 'D_489', 'D_489',
+                                          'A_280', status);
+    dbms_output.put_line('TEST UPDATE - OUTPUT: ' || status);
     
 --- TEST INSERT WITH DEFAULT
-    pk_app_admin.PR_INSERT_UPDATE_APP_USER(2,2,'Dwight','Schrute',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
+--    pk_app_admin.pr_insert_update_app_user('A_280', 490, 2, 'D_490', 'D_490',
+--                                          'A_280', status);
+
+--    dbms_output.put_line('TEST INSERT - OUTPUT: ' || status);
     
---- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_APP_USER(1,3,NULL,NULL,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+----- TEST UPDATE
+--    pk_app_admin.pr_insert_update_app_user('A_280', 469, 3, NULL, NULL,
+--                                          'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
 
 --- TEST UPDATE
-    pk_app_admin.PR_INSERT_UPDATE_APP_USER(5,20,'Stan','Lee',STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);   
+--    pk_app_admin.pr_insert_update_app_user('A_280', 477, 20, 'D_477', 'D_477',
+--                                          'A_280', status);
+
+    dbms_output.put_line('TEST NULL - OUTPUT: ' || status);
 END;
 /
 -----------------------------------------------------------------------------------------------------
 --- DELETE APP_USER
 -----------------------------------------------------------------------------------------------------
 
-
 DECLARE
-
-STATUS varchar2(400);
+    status VARCHAR2(400);
 BEGIN
-    pk_app_admin.PR_DELETE_APP_USER(2,2,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST DELETE - OUTPUT: '|| STATUS);
-    
-    pk_app_admin.PR_DELETE_APP_USER(20,1,STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INVALID USER - OUTPUT: '|| STATUS);
-    
-    pk_app_admin.PR_DELETE_APP_USER(1,50, STATUS);
-    DBMS_OUTPUT.PUT_LINE('TEST INVALID ROLE - OUTPUT: '|| STATUS);
+--    pk_app_admin.pr_delete_app_user('A_280', 489,2, 'A_280', status);
+--    dbms_output.put_line('TEST DELETE - OUTPUT: ' || status);
+    pk_app_admin.pr_delete_app_user('A_280', 637, 2, 'A_280', status);
+    dbms_output.put_line('TEST INVALID USER - OUTPUT: ' || status);
+    pk_app_admin.pr_delete_app_user('A_280', 437, 50, 'A_280', status);
+    dbms_output.put_line('TEST INVALID ROLE - OUTPUT: ' || status);
 END;
 /
 
-BEGIN
---- ROLLBACK USER_DETAILS
-    DELETE from APP_USER;
-    --where user_id>500;
-    --UPDATE APP_USER SET role_id=1 where user_id=1;
-END;
+
+-----------------------------------------------------------------------------------------------------
+--- ROLLBACKS
+-----------------------------------------------------------------------------------------------------
+--BEGIN
+----- ROLLBACK ALLERGY
+--    DELETE from ALLERGIES where allergy_name='Metal Allergy';
+--    UPDATE ALLERGIES SET allergy_name='Wheat Allergy' where allergy_id=7;
+--
+--END;
 /
+--
+--
+--BEGIN
+----- ROLLBACK APP_ROLE
+--    DELETE from APP_ROLE where role_type='Pharmacy';
+--    UPDATE APP_ROLE SET role_type='Pharmacist' where role_id=3;
+--
+--END;
+/
+--
+--
+--BEGIN
+----- ROLLBACK COUNTRY
+--    DELETE from COUNTRY where country_code>1;
+--    UPDATE COUNTRY SET country_name='US' where country_code=1;
+--
+--END;
+--/
+--
+--
+--BEGIN
+----- ROLLBACK DIET
+--    DELETE from DIET where diet_id>11;
+--    UPDATE DIET SET diet_type='Ovo-Lacto Vegetarian' where diet_id=9;
+--END;
+--/
+--
+--
+--BEGIN
+----- ROLLBACK DISEASES
+--    DELETE from DISEASES where disease_name='Leukemia';
+--    UPDATE DISEASES SET disease_name='Hemophilia',is_chronic='TRUE', is_hereditary='TRUE',is_terminal='TRUE' where disease_id=20;
+--END;
+--/
+--
+--
+--BEGIN
+----- ROLLBACK ETHNICITY
+--    DELETE from ETHNICITY where ethnicity_name='Nordic';
+--    UPDATE ETHNICITY SET ethnicity_name='Hawaian' where ethnicity_id=5;
+--END;
+--/
+--
+--
+--BEGIN
+----- ROLLBACK HABIT
+--    DELETE from HABIT where habit_name='Not Eating';
+--    UPDATE HABIT SET habit_name='JUUL' where habit_id=3;
+--END;
+--/
+--
+--
+--BEGIN
+----- ROLLBACK MEDICINE
+--    DELETE from MEDICINES where medicine_name='Combiflam';
+--    UPDATE MEDICINES SET medicine_name='zofram' where medicine_id=10;
+--END;
+--/
+--
+--
+--BEGIN
+----- ROLLBACK SYMPTOMS
+--    DELETE from SYMPTOMS where symptom_name='Blackout';
+--    UPDATE SYMPTOMS SET symptom_name='Thinning Hair' where symptom_id=35;
+--END;
+--/
+--
+--
+--BEGIN
+----- ROLLBACK VACCINE
+--    DELETE from VACCINE where vaccine_name='PSLV4';
+--    UPDATE VACCINE SET vaccine_name='PCV13',disease_id=15 where vaccine_id=1;
+--END;
+--/
+--
+--
+--BEGIN
+----- ROLLBACK LOCATION_STATISTICS
+--    DELETE from LOCATION_STATISTICS where location_code>31836;
+--    UPDATE LOCATION_STATISTICS SET zip_id=1,particulate_matter_reading=3,co_readings=4,no2_readings=0,air_polution_index=1,water_quality_parameter=1 where location_code=1;
+--END;
+--/
+--
+--BEGIN
+----- ROLLBACK ZIPCODE
+--    DELETE from ZIPCODE where zip_id>31836;
+--    UPDATE ZIPCODE SET zip_code=1,county='Hampden',city='Agawam',state_name='Massachusetts',country_code=1 where zip_id=1;
+--END;
+--/
+--
+--
+--BEGIN
+----- ROLLBACK USER_DETAILS
+--    DELETE from USER_DETAILS where last_name='Buttowski';
+--    UPDATE USER_DETAILS SET first_name='Jani',last_name='Biddy',gender='Male',date_of_birth='11-DEC-69',weight=95,height=150,zip_id=3997,diet_id=2,ethnicity_id=3 where user_id=499;
+--END;
+--/
+--
+--BEGIN
+----- ROLLBACK USER_DETAILS
+--    UPDATE APP_USER SET role_id=1 where user_id=490;
+--    UPDATE APP_USER SET role_id=1 where user_id=489;
+--END;
+--/
