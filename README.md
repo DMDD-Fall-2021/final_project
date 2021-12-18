@@ -33,4 +33,8 @@ Please run the following files in given order:
 
 8. TEST_CASE_DOCTOR.sql : To identify all the negative test cases performed on INSERT/UPDATE/DELETE/SELECT performed by a Doctor and test validations, we can run TEST_CASE_DOCTOR.sql.
 
+## ER DIAGRAM:
+
+<img src="https://raw.githubusercontent.com/DMDD-Fall-2021/final_project/main/ER%20Diagram.svg">
+
 
