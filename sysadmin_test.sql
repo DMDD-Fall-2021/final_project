@@ -31,6 +31,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);
 
 END;
+/
 
 BEGIN
 --- ROLLBACK ALLERGY
@@ -38,11 +39,11 @@ BEGIN
     UPDATE ALLERGIES SET allergy_name='Wheat Allergy' where allergy_id=7;
 
 END;
-
+/
 -----------------------------------------------------------------------------------------------------
 --- APP_ROLE
 -----------------------------------------------------------------------------------------------------
-set serveroutput on;
+
 
 DECLARE
 
@@ -76,6 +77,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('TEST FUTURE DATE - OUTPUT: '|| STATUS);
 
 END;
+/
 
 BEGIN
 --- ROLLBACK APP_ROLE
@@ -83,12 +85,12 @@ BEGIN
     UPDATE APP_ROLE SET role_type='Pharmacist' where role_id=3;
 
 END;
-
+/
 
 -----------------------------------------------------------------------------------------------------
 --- COUNTRY
 -----------------------------------------------------------------------------------------------------
-set serveroutput on;
+
 
 DECLARE
 
@@ -118,6 +120,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
 
 END;
+/
 
 BEGIN
 --- ROLLBACK COUNTRY
@@ -125,11 +128,11 @@ BEGIN
     UPDATE COUNTRY SET country_name='US' where country_code=1;
 
 END;
-
+/
 -----------------------------------------------------------------------------------------------------
 --- DIET
 -----------------------------------------------------------------------------------------------------
-set serveroutput on;
+
 
 DECLARE
 
@@ -159,17 +162,19 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
 
 END;
+/
 
 BEGIN
 --- ROLLBACK DIET
     DELETE from DIET where diet_id>11;
     UPDATE DIET SET diet_type='Ovo-Lacto Vegetarian' where diet_id=9;
 END;
+/
 
 -----------------------------------------------------------------------------------------------------
 --- DISEASES
 -----------------------------------------------------------------------------------------------------
-set serveroutput on;
+
 
 DECLARE
 
@@ -211,17 +216,19 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('TEST CHRONIC WRONG- OUTPUT: '|| STATUS);
 
 END;
+/
 
 BEGIN
 --- ROLLBACK DISEASES
     DELETE from DISEASES where disease_id>21;
     UPDATE DISEASES SET disease_name='Hemophilia',is_chronic='TRUE', is_hereditary='TRUE',is_terminal='TRUE' where disease_id=20;
 END;
+/
 
 -----------------------------------------------------------------------------------------------------
 --- ETHNICITY
 -----------------------------------------------------------------------------------------------------
-set serveroutput on;
+
 
 DECLARE
 
@@ -251,17 +258,19 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
 
 END;
+/
 
 BEGIN
 --- ROLLBACK ETHNICITY
     DELETE from ETHNICITY where ethnicity_id>11;
     UPDATE ETHNICITY SET ethnicity_name='Hawaian' where ethnicity_id=5;
 END;
+/
 
 -----------------------------------------------------------------------------------------------------
 --- HABIT
 -----------------------------------------------------------------------------------------------------
-set serveroutput on;
+
 
 DECLARE
 
@@ -291,17 +300,19 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
 
 END;
+/
 
 BEGIN
 --- ROLLBACK HABIT
     DELETE from HABIT where habit_id>12;
     UPDATE HABIT SET habit_name='JUUL' where habit_id=3;
 END;
+/
 
 -----------------------------------------------------------------------------------------------------
 --- MEDICINE
 -----------------------------------------------------------------------------------------------------
-set serveroutput on;
+
 
 DECLARE
 
@@ -331,17 +342,19 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
 
 END;
+/
 
 BEGIN
 --- ROLLBACK MEDICINE
     DELETE from MEDICINES where medicine_id>20;
     UPDATE MEDICINES SET medicine_name='zofram' where medicine_id=10;
 END;
+/
 
 -----------------------------------------------------------------------------------------------------
 --- SYMPTOMS
 -----------------------------------------------------------------------------------------------------
-set serveroutput on;
+
 
 DECLARE
 
@@ -371,17 +384,19 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('TEST TOO LONG - OUTPUT: '|| STATUS);    
 
 END;
+/
 
 BEGIN
 --- ROLLBACK SYMPTOMS
     DELETE from SYMPTOMS where symptom_id>40;
     UPDATE SYMPTOMS SET symptom_name='Thinning Hair' where symptom_id=35;
 END;
+/
 
 -----------------------------------------------------------------------------------------------------
 --- VACCINE
 -----------------------------------------------------------------------------------------------------
-set serveroutput on;
+
 
 DECLARE
 
@@ -419,17 +434,19 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('TEST DISEASE NULL - OUTPUT: '|| STATUS);  
 
 END;
+/
 
 BEGIN
 --- ROLLBACK VACCINE
     DELETE from VACCINE where vaccine_id>6;
     UPDATE VACCINE SET vaccine_name='PCV13',disease_id=15 where vaccine_id=1;
 END;
+/
 
 -----------------------------------------------------------------------------------------------------
 --- LOCATION_STATISTICS
 -----------------------------------------------------------------------------------------------------
-set serveroutput on;
+
 
 DECLARE
 
@@ -459,17 +476,19 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
 
 END;
+/
 
 BEGIN
 --- ROLLBACK LOCATION_STATISTICS
     DELETE from LOCATION_STATISTICS where location_code>31836;
     UPDATE LOCATION_STATISTICS SET zip_id=1,particulate_matter_reading=3,co_readings=4,no2_readings=0,air_polution_index=1,water_quality_parameter=1 where location_code=1;
 END;
+/
 
 -----------------------------------------------------------------------------------------------------
 --- ZIPCODE
 -----------------------------------------------------------------------------------------------------
-set serveroutput on;
+
 
 DECLARE
 
@@ -523,18 +542,19 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
    
 END;
+/
 
 BEGIN
 --- ROLLBACK ZIPCODE
     DELETE from ZIPCODE where zip_id>31836;
     UPDATE ZIPCODE SET zip_code=1,county='Hampden',city='Agawam',state_name='Massachusetts',country_code=1 where zip_id=1;
 END;
-
+/
 
 -----------------------------------------------------------------------------------------------------
 --- USER_DETAILS
 -----------------------------------------------------------------------------------------------------
-set serveroutput on;
+
 
 DECLARE
 
@@ -564,9 +584,48 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
    
 END;
+/
 
 BEGIN
 --- ROLLBACK USER_DETAILS
     DELETE from USER_DETAILS where user_id>500;
     UPDATE USER_DETAILS SET first_name='James',last_name='Butt',gender='Male',date_of_birth='11-JUN-89',weight=96,height=174,zip_id=2349,diet_id=1,ethnicity_id=4 where user_id=1;
 END;
+/
+-----------------------------------------------------------------------------------------------------
+--- APP_USER
+-----------------------------------------------------------------------------------------------------
+
+
+DECLARE
+
+STATUS varchar2(400);
+
+BEGIN
+
+--- PART N
+--- TEST UPDATE APP_USER
+    PR_INSERT_UPDATE_APP_USER(1,1,'Jim','Halpert',STATUS);
+    DBMS_OUTPUT.PUT_LINE('TEST UPDATE - OUTPUT: '|| STATUS);
+    
+--- TEST INSERT WITH DEFAULT
+    PR_INSERT_UPDATE_APP_USER(2,2,'Dwight','Schrute',STATUS);
+    DBMS_OUTPUT.PUT_LINE('TEST INSERT - OUTPUT: '|| STATUS);
+    
+--- TEST UPDATE
+    PR_INSERT_UPDATE_APP_USER(1,3,NULL,NULL,STATUS);
+    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);
+
+--- TEST UPDATE
+    PR_INSERT_UPDATE_APP_USER(5,20,'Stan','Lee',STATUS);
+    DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);   
+END;
+/
+
+BEGIN
+--- ROLLBACK USER_DETAILS
+    DELETE from APP_USER;
+    --where user_id>500;
+    --UPDATE APP_USER SET role_id=1 where user_id=1;
+END;
+/
