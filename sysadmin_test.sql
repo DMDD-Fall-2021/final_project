@@ -621,6 +621,25 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('TEST NULL - OUTPUT: '|| STATUS);   
 END;
 /
+-----------------------------------------------------------------------------------------------------
+--- DELETE APP_USER
+-----------------------------------------------------------------------------------------------------
+
+
+DECLARE
+
+STATUS varchar2(400);
+BEGIN
+    PR_DELETE_APP_USER(2,2,STATUS);
+    DBMS_OUTPUT.PUT_LINE('TEST DELETE - OUTPUT: '|| STATUS);
+    
+    PR_DELETE_APP_USER(20,1,STATUS);
+    DBMS_OUTPUT.PUT_LINE('TEST INVALID USER - OUTPUT: '|| STATUS);
+    
+    PR_DELETE_APP_USER(1,50, STATUS);
+    DBMS_OUTPUT.PUT_LINE('TEST INVALID ROLE - OUTPUT: '|| STATUS);
+END;
+/
 
 BEGIN
 --- ROLLBACK USER_DETAILS
